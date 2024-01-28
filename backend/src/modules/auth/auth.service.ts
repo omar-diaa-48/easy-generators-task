@@ -64,6 +64,16 @@ export class AuthService {
         }
     }
 
+    async verify(user: IJwtPayload): Promise<IJwtPayload> {
+        const client = await this.userModel.findOne({ email: user.email })
+
+        if (!client) {
+            throw new NotFoundException('Invalid credentials')
+        }
+
+        return user;
+    }
+
     private async comparePassword(plainPassword: string, hashPassword: string): Promise<boolean> {
         return bcrypt.compare(plainPassword, hashPassword)
     }
