@@ -6,9 +6,14 @@ import PageContainer from "../components/containers/PageContainer";
 import AuthContainer from "../components/containers/AuthContainer";
 import TextFieldInput from "../components/handlers/TextFieldInput";
 import Button from "../components/handlers/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { signUpAsyncAction } from "../store/reducers/user.reducer";
+import { useAppDispatch } from "../store/hooks";
 
 const SignUp = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     const methods = useForm<ISignUpForm>({
         mode: "onChange",
         criteriaMode: "all",
@@ -25,7 +30,12 @@ const SignUp = () => {
     const { handleSubmit, formState } = methods;
 
     const handleUserSubmit = (form: ISignUpForm) => {
-        console.log(form)
+        dispatch(signUpAsyncAction(form))
+            .then((data) => {
+                if (data.meta.requestStatus === "fulfilled") {
+                    navigate("/")
+                }
+            })
     }
 
     return (
@@ -38,7 +48,7 @@ const SignUp = () => {
                             <TextFieldInput name="email" label="Email" variant="outlined" />
                             <TextFieldInput name="password" label="Password" type="password" variant="outlined" />
                             <div>
-                                <Button disabled={!formState.isValid} type="submit">Sign In</Button>
+                                <Button disabled={!formState.isValid} type="submit">Sign Up</Button>
                             </div>
                         </form>
                     </FormProvider>

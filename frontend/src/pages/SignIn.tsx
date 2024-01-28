@@ -6,9 +6,14 @@ import AuthContainer from "../components/containers/AuthContainer";
 import PageContainer from "../components/containers/PageContainer";
 import TextFieldInput from "../components/handlers/TextFieldInput";
 import Button from "../components/handlers/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../store/hooks";
+import { signInAsyncAction } from "../store/reducers/user.reducer";
 
 const SignIn = () => {
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+
     const methods = useForm<ISignInForm>({
         mode: "onChange",
         criteriaMode: "all",
@@ -24,7 +29,12 @@ const SignIn = () => {
     const { handleSubmit, formState } = methods;
 
     const handleUserSubmit = (form: ISignInForm) => {
-        console.log(form)
+        dispatch(signInAsyncAction(form))
+            .then((data) => {
+                if (data.meta.requestStatus === "fulfilled") {
+                    navigate("/")
+                }
+            })
     }
 
     return (
