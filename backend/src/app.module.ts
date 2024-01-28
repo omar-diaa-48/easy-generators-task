@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
@@ -8,9 +8,15 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true
     }),
 
-    MongooseModule.forRoot('mongodb://localhost/easy-generators')
+    MongooseModule.forRootAsync({
+      useFactory: (configService: ConfigService) => {
+        return {
+          uri: configService.get<string>("DATABASE_URI")
+        }
+      },
+
+      inject: [ConfigService]
+    })
   ],
-  controllers: [],
-  providers: [],
 })
 export class AppModule { }
