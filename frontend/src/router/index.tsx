@@ -3,11 +3,13 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
 import CheckAuth from "../components/layout/CheckAuth";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <CheckAuth><Home /></CheckAuth>,
+        errorElement: <Error />
     },
     {
         path: "/sign-in",
