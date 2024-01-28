@@ -1,4 +1,4 @@
-import { ISignInForm } from "../utilities/interfaces/auth.interface";
+import { ISignInForm } from "../utilities/interfaces/auth-request.interface";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import signInSchema from "../utilities/schemas/sign-in";

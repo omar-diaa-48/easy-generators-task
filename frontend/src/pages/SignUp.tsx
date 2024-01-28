@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from "react-hook-form";
-import { ISignUpForm } from "../utilities/interfaces/auth.interface";
+import { ISignUpForm } from "../utilities/interfaces/auth-request.interface";
 import { yupResolver } from "@hookform/resolvers/yup";
 import signUpSchema from "../utilities/schemas/sign-up";
 import PageContainer from "../components/containers/PageContainer";
