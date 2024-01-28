@@ -10,8 +10,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 
     MongooseModule.forRootAsync({
       useFactory: (configService: ConfigService) => {
+        const DATABASE_URI = configService.get<string>("DATABASE_URI")
+
         return {
-          uri: configService.get<string>("DATABASE_URI")
+          uri: DATABASE_URI,
+          retryAttempts: 5,
+          retryDelay: 3000,
         }
       },
 
