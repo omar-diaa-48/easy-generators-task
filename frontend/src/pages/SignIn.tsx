@@ -6,6 +6,7 @@ import AuthContainer from "../components/containers/AuthContainer";
 import PageContainer from "../components/containers/PageContainer";
 import TextFieldInput from "../components/handlers/TextFieldInput";
 import Button from "../components/handlers/Button";
+import { Link } from "react-router-dom";
 
 const SignIn = () => {
     const methods = useForm<ISignInForm>({
@@ -39,6 +40,10 @@ const SignIn = () => {
                             </div>
                         </form>
                     </FormProvider>
+
+                    <p className="text-sm font-light my-4 text-gray-500 dark:text-gray-400">
+                        Don’t have an Profile yet? <Link to="/sign-up" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</Link>
+                    </p>
                 </div>
             </AuthContainer>
         </PageContainer>

@@ -1,4 +1,4 @@
-import yup from 'yup';
+import * as yup from 'yup';
 import signInSchema from "./sign-in";
 
 const schema = signInSchema.shape({
