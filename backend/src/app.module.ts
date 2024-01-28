@@ -13,9 +13,7 @@ import { MongooseModule } from '@nestjs/mongoose';
         const DATABASE_URI = configService.get<string>("DATABASE_URI")
 
         return {
-          uri: DATABASE_URI,
-          retryAttempts: 5,
-          retryDelay: 3000,
+          uri: DATABASE_URI
         }
       },
 

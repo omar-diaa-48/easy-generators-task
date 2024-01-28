@@ -11,7 +11,7 @@ async function bootstrap() {
 
 bootstrap()
   .then(() => {
-    console.trace('This service is up and running')
+    console.log('This service is up and running')
   })
   .catch((error) => {
     console.error('This service failed to start')
