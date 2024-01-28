@@ -4,11 +4,18 @@ import SignUp from "../pages/SignUp";
 import Home from "../pages/Home";
 import CheckAuth from "../components/layout/CheckAuth";
 import Error from "../pages/Error";
+import MainLayout from "../components/layout/MainLayout";
+import ProtectedRoute from "../components/layout/ProtectedRoute";
 
 const router = createBrowserRouter([
     {
-        path: "/",
-        element: <CheckAuth><Home /></CheckAuth>,
+        element: <CheckAuth><MainLayout /></CheckAuth>,
+        children: [
+            {
+                path: "/",
+                element: <ProtectedRoute><Home /></ProtectedRoute>
+            }
+        ],
         errorElement: <Error />
     },
     {

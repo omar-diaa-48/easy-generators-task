@@ -18,7 +18,6 @@ const CheckAuth: React.FC<PropsWithChildren> = ({ children }) => {
                 .then((data) => {
                     if (data.meta.requestStatus !== "fulfilled") {
                         dispatch(logoutAction())
-                        navigate('/sign-up')
                     }
 
                     setIsAuthenticating(false)
