@@ -3,10 +3,8 @@ import { useAppDispatch } from '../../store/hooks';
 import useAddTokenHook from '../../hooks/use-add-token-hook';
 import { logoutAction, verifyTokenAsyncAction } from '../../store/reducers/user.reducer';
 import Loader from './Loader';
-import { useNavigate } from 'react-router-dom';
 
 const CheckAuth: React.FC<PropsWithChildren> = ({ children }) => {
-    const navigate = useNavigate();
     const dispatch = useAppDispatch();
 
     const [isTokenAdded] = useAddTokenHook()
