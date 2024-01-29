@@ -1,0 +1,19 @@
+# Easy Generators Task Guide
+
+This provides a guide line on how to start the project, note that all .env are not ignored for easiness of testing
+
+Currently, two official methods are available:
+
+## Running the app using Docker compose:
+```bash
+    # in the root directory
+    $ docker compose up
+```
+
+## Running the app through dev setup:
+```bash
+    # from the root directory
+    $ cd ./backend && yarn && yarn start:dev
+    # from the root directory
+    $ cd ./frontend && yarn && yarn dev
+```

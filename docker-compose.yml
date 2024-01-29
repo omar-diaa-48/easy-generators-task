@@ -11,8 +11,8 @@ services:
       SERVER_PORT: 9000
       JWT_SECRET: 1e3AQ4pPB8WJswNnQBNcl75bzj8lCx1U
       DATABASE_URI: mongodb://mongo:27017/easy-generators
-      BACKEND_URL: http://backend:9000
-      FRONTEND_URL: http://frontend:3000
+      BACKEND_URL: http://localhost:9000
+      FRONTEND_URL: http://localhost:3000
     depends_on:
       - mongo
 
@@ -23,7 +23,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      VITE_BACKEND_URL: http://backend:9000
+      VITE_BACKEND_URL: http://localhost:9000
     depends_on:
       - backend
 
