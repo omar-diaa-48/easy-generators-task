@@ -19,13 +19,18 @@ const router = createBrowserRouter([
         errorElement: <Error />
     },
     {
-        path: "/sign-in",
-        element: <SignIn />,
-    },
-    {
-        path: "/sign-up",
-        element: <SignUp />,
-    },
+        element: <MainLayout />,
+        children: [
+            {
+                path: "/sign-in",
+                element: <SignIn />,
+            },
+            {
+                path: "/sign-up",
+                element: <SignUp />,
+            },
+        ]
+    }
 ]);
 
 export default router;
